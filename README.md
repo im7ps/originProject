@@ -25,7 +25,7 @@
 git clone https://github.com/tuo-username/plantcare-ai.git
 cd plantcare-ai
 touch /src/assets/enviroment.ts
-// crea la tua API_KEY e inseriscila dentro enviroment.ts:
+// crea la tua API_KEY dal tuo profilo google e inseriscila dentro enviroment.ts:
 export class Enviroment {
 	readonly API_KEY="tua API_KEY";
 
@@ -38,7 +38,7 @@ ionic serve --project nome-tuo-progetto
 ```
 
 🤖 Integrazione con l'AI
-L'app usa un servizio ai.service.ts per comunicare con un backend AI (potresti usare OpenAI, HuggingFace, ecc.) per generare consigli intelligenti su:
+L'app usa un servizio ai.service.ts per comunicare con un backend AI (utilizza GEMINI) per generare consigli intelligenti su:
 
 Quando annaffiare
 
