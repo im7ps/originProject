@@ -1,0 +1,29 @@
+:root {
+	--ion-color-primary: #2E7D32;
+	--ion-color-primary-rgb: 46,125,50;
+	--ion-color-primary-contrast: #FFFFFF;
+	--ion-color-primary-contrast-rgb: 255,255,255;
+	--ion-color-primary-shade: #286E2C;
+	--ion-color-primary-tint: #438A48;
+  
+	--ion-color-secondary: #FFD54F;
+	--ion-color-secondary-rgb: 255,213,79;
+	--ion-color-secondary-contrast: #000000;
+	--ion-color-secondary-contrast-rgb: 0,0,0;
+	--ion-color-secondary-shade: #72AF75;
+	--ion-color-secondary-tint: #8ECD91;
+	
+	--ion-color-tertiary: #FF9800; // Colore arancione per i bordi
+	--ion-color-tertiary-rgb: 255,152,0;
+	--ion-color-tertiary-contrast: #438A48; // Colore SCRITTE
+	--ion-color-tertiary-contrast-rgb: 255,255,255;
+	--ion-color-tertiary-shade: #ebc22b;
+	--ion-color-secondary-tint: #ece2d6;
+  
+	// --ion-color-background: #ececec; // Verde scuro per gli sfondi dell'header
+	--ion-color-background: #faf2d9; // Verde scuro per gli sfondi dell'header
+	--ion-color-warning: #d4293a; // Rosso tenue per il warning
+	--ion-color-warning-rgb: 255,205,210;
+	--ion-color-warning-contrast: #000000;
+	--ion-color-warning-contrast-rgb: 0,0,0;
+  }

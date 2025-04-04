@@ -1,0 +1,142 @@
+@import 'variables.scss';
+@import '@ionic/angular/css/normalize.css';
+@import '@ionic/angular/css/structure.css';
+@import '@ionic/angular/css/typography.css';
+@import '@ionic/angular/css/core.css';
+@import '@ionic/angular/css/padding.css';
+@import '@ionic/angular/css/float-elements.css';
+@import '@ionic/angular/css/text-alignment.css';
+@import '@ionic/angular/css/flex-utils.css';
+@import '@ionic/angular/css/display.css';
+
+
+app-root {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+}
+
+html, body {
+	height: 100%; // Assicurati che l'altezza sia al 100%
+	margin: 0;
+	display: flex;
+	justify-content: center; // Centra verticalmente
+	align-items: center; // Centra orizzontalmente
+	flex-direction: column; // Disposizione verticale
+}
+
+// Stili per i testi
+body {
+	font-family: 'Lato', sans-serif; // Sostituito Lato con Lato
+	font-size: 16px; // Dimensione base del testo
+	line-height: 1.5; // Altezza della linea per una migliore leggibilità
+	color: #333; // Colore del testo principale
+  }
+
+  ion-col {
+	display: flex;
+	justify-content: center;
+  }
+  
+  ion-button {
+	width: 100%;
+	padding: 0;
+	max-width: 400px;
+  }
+
+  ion-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	--background: var(--ion-color-background);
+  }
+
+  ion-app {
+	--background: var(--ion-color-background);
+  }
+
+  ion-card {
+	width: 100%;
+	max-width: 400px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--ion-color-secondary-tint);
+	border: 1px solid var(--ion-color-tertiary); // Bordi in arancione
+	color: var(--ion-color-tertiary-contrast); // Scritte in bianco
+  }
+
+  ion-item {
+	max-width: 400px;
+  }
+
+  ion-title {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 700; // Grassetto per i titoli
+	color: var(--ion-color-primary-shade); // Verde primario per i titoli
+  }
+	
+  ion-text {
+	font-family: 'Lato', sans-serif;
+	font-size: 1rem; // Dimensione del paragrafo
+	color: var(--ion-color-primary-shade); // Colore leggermente più chiaro per i paragrafi
+	margin-bottom: 1rem; // Spaziatura tra i paragrafi
+ }
+
+  ion-icon {
+	margin: 1px; // Spaziatura esterna
+	min-width: 24px; // Larghezza minima
+	min-height: 24px; // Altezza minima
+	font-size: 24px; // Dimensione dell'icona
+	color: var(--ion-color-primary); // Colore dell'icona (puoi cambiarlo)
+  }
+
+  ion-row {
+	justify-content: center;
+  }
+
+  ion-toolbar {
+	--background: var(--ion-color-tertiary-shade);
+  }
+
+  ion-text {
+	color: var(--ion-color-primary-shade);
+	margin: 1px;
+	padding: 3px;
+  }
+
+  ion-item {
+	width: 100%;
+	max-width: 400px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	--background: var(--ion-color-secondary-tint);
+	border: 1px solid var(--ion-color-tertiary); // Bordi in arancione
+	color: var(--ion-color-tertiary-contrast); // Scritte in bianco
+  }
+
+.header-button {
+	padding-right: 4px;
+}
+
+.cta {
+	display: flex;
+	gap: 10px; // Spaziatura tra i bottoni
+}
+
+.home-footer {
+	display: flex;
+	justify-content: end;
+	width: 100%;
+}
+
+.footer-title {
+	width: 100%;
+}

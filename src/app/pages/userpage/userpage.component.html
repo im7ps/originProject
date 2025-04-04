@@ -1,0 +1,144 @@
+<ion-header class="homeHeader">
+    <ion-toolbar class="homeToolbar">
+
+        <ion-title slot="start" class="home-title">
+            <ion-icon name="leaf" color="primary"></ion-icon>
+            PlantCare
+        </ion-title>
+
+        <div slot="end" class="cta">
+            <ion-button class="header-button" routerLink="/home" color="secondary">
+				<ion-text>Home</ion-text> 
+			</ion-button>
+			
+            <ion-button class="header-button" routerLink="/logout" color="secondary">
+				<ion-text>Logout</ion-text> 
+			</ion-button>
+        </div>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+	<div class="page-container">
+
+	  <div class="user-image-container">
+		<img 
+		  src="assets/images/plant1-header.jpg" 
+		  alt="User Avatar" 
+		  class="user-image"
+		>
+	  </div>
+  
+
+	  <ion-card class="user-card">
+		<ion-card-header>
+		  <ion-card-title>Profilo Utente</ion-card-title>
+		</ion-card-header>
+  
+		<ion-card-content>
+		  <div class="stats-container">
+			<div class="stat-item">
+			  <ion-text class="stat-value">{{ user.plants.length || '0'}}</ion-text>
+			  <ion-text class="stat-label">Piante</ion-text>
+			</div>
+			<div class="stat-item">
+			  <ion-text class="stat-value">5</ion-text>
+			  <ion-text class="stat-label">Specie</ion-text>
+			</div>
+			<div class="stat-item">
+			  <ion-text class="stat-value">{{ temperature || 'N/D' }}</ion-text>
+			  <ion-text class="stat-label">Temperatura</ion-text>
+			</div>
+		  </div>
+  
+
+		  <div class="actions-container">
+			<ion-button expand="block" (click)="viewPlantCollection()">
+			  <ion-icon slot="start" name="leaf" color="tertiary"></ion-icon>
+			  La mia collezione
+			</ion-button>
+  
+			<ion-button id="open-modal" expand="block">
+			  <ion-icon slot="start" name="add" color="tertiary"></ion-icon>
+			  Aggiungi pianta
+			</ion-button>
+  
+
+			<div *ngIf="!isInputVisible">
+				<ion-button expand="block" (click)="showCityInput()">
+					<ion-icon slot="start" name="thermometer" color="tertiary"></ion-icon>
+					Aggiorna temperatura
+				</ion-button>
+			</div>
+			
+
+			<div *ngIf="isInputVisible" class="temperature-input-container">
+				<ion-item>
+				  <ion-input 
+					type="text"
+					placeholder="Inserisci la tua città"
+					#cityInput>
+				  </ion-input>
+				</ion-item>
+				<ion-button (click)="confirmCity(cityInput.value)">Conferma</ion-button>
+			</div>
+		  </div>
+		</ion-card-content>
+	  </ion-card>
+	</div>
+	<ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+		<ng-template>
+			<div class="custom-modal">
+				<ion-header class="modal-header">
+				  <ion-toolbar>
+					<ion-title>Aggiungi Pianta</ion-title>
+					<ion-buttons slot="end">
+					  <ion-button (click)="cancel()">Chiudi</ion-button>
+					</ion-buttons>
+				  </ion-toolbar>
+				</ion-header>
+			
+				<ion-content class="modal-content ion-padding">
+				  <ion-item class="modal-item">
+					<ion-label position="floating"></ion-label>
+					<ion-input
+					  label="Nome:"
+					  type="text"
+					  placeholder="La tua nuova pianta"
+					  #plantInput
+					></ion-input>
+				  </ion-item>
+			
+				  <ion-item class="modal-item">
+					<ion-label>Posizione</ion-label>
+					<ion-select #positionSelect placeholder="Seleziona posizione">
+					  <ion-select-option value="interno">Interno</ion-select-option>
+					  <ion-select-option value="esterno">Esterno</ion-select-option>
+					</ion-select>
+				  </ion-item>
+			
+				  <ion-item class="modal-item">
+					<ion-label>Insieme ad altre piante</ion-label>
+					<ion-toggle #isolatedToggle></ion-toggle>
+				  </ion-item>
+			
+				  <ion-button
+					class="modal-button"
+					(click)="confirm(plantInput.value, positionSelect.value, isolatedToggle.value)"
+					[strong]="true"
+				  >
+					Conferma
+				  </ion-button>
+				</ion-content>
+			</div>
+		</ng-template>
+	  </ion-modal>
+  </ion-content>
+
+  <ion-footer class="userpage-footer">
+	<ion-toolbar>
+		<ion-title slot="end" size="small" class="footer-title">
+			&copy; 2025 PlantCare. Tutti i diritti riservati.
+		</ion-title>
+	</ion-toolbar>
+</ion-footer>

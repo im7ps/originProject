@@ -1,0 +1,38 @@
+<ion-content class="ion-padding">
+	<div class="page-container">
+		<ion-card class="plant-card">
+			<div class="card-header">
+				<div class="plant-image-container">
+					<img 
+						src="assets/images/sunflowers.jpg"
+						alt="User Avatar" 
+						class="plant-image"
+					>
+				</div>
+				<ion-title class="plant-title">{{ plant.name }}</ion-title>
+				<div class="button-grid">
+					<ion-button color="warning">
+						<ion-icon name="close" color="primary"></ion-icon>
+					</ion-button>
+					<ion-button color="tertiary">
+						<ion-icon name="checkmark" color="primary"></ion-icon>
+					</ion-button>
+					<ion-button color="secondary">
+						<ion-icon name="pencil" color="primary"></ion-icon>
+					</ion-button>
+				</div>
+			</div>
+		  
+			<!-- CONSIGLI -->
+			<div class="card-body">
+			  <ion-text>{{ aiResponse }}</ion-text>
+			</div>
+		  
+			<!-- FOOTER -->
+			<div class="card-footer">
+			  <ion-text>Prossima annaffiatura in: 3 ore</ion-text>
+			</div>
+		</ion-card>
+	</div>
+</ion-content>
+  

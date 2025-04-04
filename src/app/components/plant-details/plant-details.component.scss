@@ -1,0 +1,109 @@
+.plant-image {
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	object-fit: cover;
+	border: 4px solid var(--ion-color-secondary);
+  }
+  
+  .plant-image-container {
+	display: flex;
+	justify-content: center;
+  }
+
+  .plant-card {
+	width: 90%;
+	height: 100%;
+  }
+
+.page-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+  }
+
+  .plant-card {
+	width: 100%;
+	max-width: 400px;
+	background: var(--ion-color-background);
+	display: flex;
+	flex-direction: column;
+	border-radius: 12px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	padding: 0;
+  }
+  
+  /* HEADER */
+  .card-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 12px;
+	background: var(--ion-color-primary-tint);
+	border-bottom: 1px solid #ddd;
+	width: 100%;
+	height: 40%;
+  }
+  
+  .button-grid {
+    display: flex;
+    flex-direction: column; /* Dispone i bottoni uno sopra l'altro */
+	justify-content: center;
+    gap: 2px; /* Spaziatura tra i bottoni */
+	height: 80%;
+  }
+
+	.button-grid ion-button {
+		// min-width: 36px;
+		// min-height: 36px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		// font-size: 24px;
+	}
+
+  .plant-icon {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	object-fit: cover;
+  }
+  
+  .plant-title {
+	flex-grow: 1;
+	text-align: center;
+	font-size: 18px;
+	font-weight: bold;
+	color: var(--ion-color-tertiary);
+	text-transform: uppercase;
+  }
+  
+  .close-btn {
+	min-width: 36px;
+	min-height: 36px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 24px;
+  }
+  
+  /* CONSIGLI */
+  .card-body {
+	flex-grow: 1;
+	padding: 16px;
+	background: var(--ion-color-background);
+	font-size: 14px;
+	text-align: center;
+  }
+  
+  /* FOOTER */
+  .card-footer {
+	padding: 10px;
+	text-align: center;
+	background: var(--ion-color-background);
+	font-weight: bold;
+	color: var(--ion-color-warning);
+	border-top: 1px solid #ddd;
+  }

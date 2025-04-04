@@ -1,0 +1,154 @@
+.page-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	padding: 16px;
+  }
+  
+  .user-image-container {
+	margin-bottom: 24px;
+	display: flex;
+	justify-content: center;
+  }
+  
+  .user-image {
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	object-fit: cover;
+	border: 3px solid var(--ion-color-medium);
+  }
+  
+  .user-card {
+	width: 100%;
+	max-width: 500px;
+  }
+  
+  .stats-container {
+	display: flex;
+	justify-content: space-around;
+	margin-bottom: 20px;
+	text-align: center;
+  }
+  
+  .stat-item {
+	display: flex;
+	flex-direction: column;
+  }
+  
+  .stat-value {
+	font-size: 1.5rem;
+	font-weight: bold;
+  }
+  
+  .stat-label {
+	font-size: 0.8rem;
+	color: var(--ion-color-medium);
+  }
+  
+  .actions-container {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+  }
+  
+  .userpage-footer {
+	display: flex;
+	justify-content: end;
+	width: 100%;
+}
+
+// .temperature-update {
+// 	display: flex;
+// 	flex-direction: column;
+// 	gap: 10px;
+// }
+
+// .temperature-input-container {
+// 	display: flex;
+// 	align-items: center;
+// 	gap: 10px; /* Spaziatura tra input e bottone */
+//   }
+  
+//   .temperature-input-container ion-item {
+// 	flex: 1; /* L'input occupa tutto lo spazio disponibile */
+//   }
+  
+//   .temperature-input-container ion-button {
+// 	flex-shrink: 0; /* Il bottone mantiene la sua dimensione naturale */
+// }
+
+/* Stile specifico per il modal */
+// .custom-modal {
+// 	display: flex;
+// 	justify-content: center;
+// 	align-items: center;
+// 	--width: 90%;
+// 	--max-width: 400px;
+// 	--height: auto;
+// 	--border-radius: 12px;
+// 	--background: var(--ion-color-light);
+// 	z-index: 1000; /* Assicurati che il modale sia sopra gli altri elementi */
+//   }
+  
+//   .modal-content {
+// 	display: flex;
+// 	flex-direction: column;
+// 	align-items: center;
+// 	padding: 20px;
+// 	width: 100%;
+//   }
+  
+//   /* Elementi del form */
+//   .modal-item {
+// 	width: 100%;
+// 	max-width: 400px;
+//   }
+  
+//   /* Bottone di conferma */
+//   .modal-button {
+// 	width: 100%;
+// 	max-width: 400px;
+// 	margin-top: 10px;
+//   }
+
+// .custom-modal::part(content) {
+	// display: flex;
+	// flex-direction: column;
+	// align-items: center;
+	// justify-content: center;
+  
+	// Per evitare che prenda tutta l'altezza disponibile in modo forzato
+	// height: 100%;
+	// width: 100%;
+	// padding: 20px;
+	// box-sizing: border-box;
+//   }
+  
+.custom-modal {
+	height: 100%;
+	width: 100%;
+
+}
+
+  .modal-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 16px;
+	width: 100%;
+	max-width: none;
+  }
+  
+  .modal-item {
+	width: 100%;
+	max-width: none;
+	margin: 3px;
+  }
+  
+  .modal-button {
+	width: 100%;
+	max-width: none;
+  }

@@ -1,0 +1,73 @@
+<!-- <ion-header>
+	<ion-toolbar>
+	  <ion-title>Aggiungi Pianta</ion-title>
+	  <ion-buttons slot="end">
+		<ion-button (click)="dismiss()">Chiudi</ion-button>
+	  </ion-buttons>
+	</ion-toolbar>
+</ion-header>
+  
+<ion-content class="ion-padding">
+	<form [formGroup]="plantForm" (ngSubmit)="submitForm()">
+	  <ion-item>
+		<ion-label position="floating">Nome Pianta</ion-label>
+		<ion-input formControlName="name"></ion-input>
+	  </ion-item>
+  
+	  <ion-item>
+		<ion-label>Posizione</ion-label>
+		<ion-select formControlName="position">
+		  <ion-select-option value="interno">Interno</ion-select-option>
+		  <ion-select-option value="esterno">Esterno</ion-select-option>
+		</ion-select>
+	  </ion-item>
+  
+	  <ion-item>
+		<ion-label>Insieme ad altre piante</ion-label>
+		<ion-toggle formControlName="grouped"></ion-toggle>
+	  </ion-item>
+  
+	  <ion-button expand="full" type="submit" [disabled]="plantForm.invalid">Salva</ion-button>
+	</form>
+</ion-content>
+
+
+
+<ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+	<ng-template>
+	  <ion-header>
+		<ion-toolbar>
+		  <ion-buttons slot="start">
+			<ion-button (click)="cancel()">Cancel</ion-button>
+		  </ion-buttons>
+		  <ion-title>Welcome</ion-title>
+		  <ion-buttons slot="end">
+			<ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+		  </ion-buttons>
+		</ion-toolbar>
+	  </ion-header>
+
+	  <ion-header>
+		<ion-toolbar>
+		  <ion-title>Aggiungi Pianta</ion-title>
+		  <ion-buttons slot="end">
+			<ion-button (click)="dismiss()">Chiudi</ion-button>
+		  </ion-buttons>
+		</ion-toolbar>
+	</ion-header>
+
+
+	  <ion-content class="ion-padding">
+		<ion-item>
+		  <ion-input
+			label="Enter your name"
+			labelPlacement="stacked"
+			type="text"
+			placeholder="Your name"
+			[(ngModel)]="name"
+		  ></ion-input>
+		</ion-item>
+	  </ion-content>
+	</ng-template>
+</ion-modal> -->
+  

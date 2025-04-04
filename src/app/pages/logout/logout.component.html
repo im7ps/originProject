@@ -1,0 +1,27 @@
+<ion-content class="logout-content">
+	<div class="logout-container">
+	  <h2>Uh, ci stai lasciando... peccato!</h2>
+	  <p>Prima che te ne vada, ricordati di controllare le tue piante più urgenti:</p>
+  
+	  <!-- Box piante -->
+	  <div class="plants-box">
+		<div class="plant-card" *ngFor="let plant of topPlants">
+		  <h3>skkk</h3>
+		  <!-- <p>Prossima irrigazione: {{ plant.wateringTime }} ore</p> -->
+		  <p>Prossima irrigazione: 3 ore</p>
+		</div>
+  
+		<!-- Se meno di 3 piante, mostra box placeholder -->
+		<div class="plant-card placeholder" *ngFor="let empty of emptySlots"></div>
+	  </div>
+  
+	  <!-- Info su PlantCare -->
+	  <div class="info-box">
+		<h4> PlantCare</h4>
+		<p>
+		  La tua assistente intelligente per la cura delle piante. Grazie all'intelligenza artificiale, ti aiuta a
+		  mantenere le tue piante sempre sane e felici. Dai un'occhiata alla tua collezione ogni giorno!
+		</p>
+	  </div>
+	</div>
+  </ion-content>

@@ -1,0 +1,10 @@
+{
+  "name": "ionic-web-app",
+  "integrations": {},
+  "type": "angular",
+  "serve": {
+    "options": {
+      "port": 8100
+    }
+  }
+}

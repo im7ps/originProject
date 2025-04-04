@@ -1,0 +1,101 @@
+
+.cta {
+	display: flex;
+	gap: 10px; // Spaziatura tra i bottoni
+}
+
+.home-footer {
+	display: flex;
+	justify-content: end;
+	width: 100%;
+}
+
+.footer-title {
+	width: 100%;
+}
+
+.plant-card {
+	width: 100%;
+	height: 200px;
+	background-size: cover;
+	background-position: center;
+	color: white;
+	background-color: rgba(0, 0, 0, 0.9); 
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	border-radius: 12px;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+	border: 3px solid var(--ion-color-tertiary);
+	background-image: url('/assets/images/sunflowers.jpg');
+  }
+
+.plant-card ion-card {
+	width: 100%;
+	height: 200px;
+	background-size: cover;
+	background-position: center;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+  }
+
+  .plant-card ion-card-title {
+	font-size: 1.2em;
+	font-weight: bold;
+  }
+  
+  .plants-grid {
+	padding: 1rem; // opzionale, solo per distanziare i bordi
+	// height: 100%;
+  }
+
+  .plants-card-title {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 700; // Grassetto per il titolo
+	font-size: 1.2rem; // Dimensione leggermente più grande
+	color: var(--ion-color-tertiary); // Colore coerente con i titoli globali
+	margin-bottom: 0.5rem; // Spaziatura tra il titolo e il testo
+	text-align: center; // Centra il testo
+  }
+  
+  .plants-card-text {
+	font-family: 'Lato', sans-serif;
+	font-size: 1rem; // Dimensione del testo coerente con i paragrafi globali
+	color: var(--ion-color-primary-shade); // Colore coerente con i testi globali
+	text-align: center; // Centra il testo
+	line-height: 1.5; // Migliora la leggibilità
+	background-color: white;
+	border-radius: 15px;
+	border: 1px;
+  }
+
+  .plants-title {
+	text-align: center;
+	margin-bottom: 1rem;
+	
+	ion-title {
+	  font-family: 'Montserrat', sans-serif;
+	  font-weight: 700;
+	  font-size: 1.8rem; // Dimensione leggermente più grande per il titolo
+	  color: var(--ion-color-tertiary); // Colore coerente con i titoli globali
+	}
+  }
+  
+  .plants-section-description {
+	text-align: center;
+	padding: 0 1rem; // Spaziatura laterale per migliorare la leggibilità
+  
+  }
+
+  .plants-card-title {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 800; // Aumenta il peso del grassetto
+	font-size: 1.5rem; // Aumenta la dimensione del font
+	color: var(--ion-color-tertiary); // Colore coerente con i titoli globali
+	margin-bottom: 0.5rem; // Spaziatura tra il titolo e il testo
+	text-align: center; // Centra il testo
+  }
+
+  
