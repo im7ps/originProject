@@ -1,59 +1,47 @@
-# IonicWebApp
+# 🌱 PlantCare AI – Ionic + Angular App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.5.
+**PlantCare AI** è un'applicazione mobile sviluppata con **Ionic Framework** e **Angular** che ti aiuta a monitorare lo stato delle tue piante e a ricevere consigli personalizzati grazie all'integrazione con l'intelligenza artificiale.
 
-## Development server
+## 🚀 Funzionalità principali
 
-To start a local development server, run:
+- 📋 **Tracciamento delle piante**: aggiungi, visualizza e modifica le informazioni delle tue piante.
+- 🌤️ **Condizioni meteo**: visualizza le previsioni meteo nella tua area per aiutarti a curare meglio le tue piante.
+- 🧠 **Consigli AI**: ricevi suggerimenti intelligenti su come curare ogni pianta grazie a un servizio AI integrato.
+- 🔐 **Autenticazione**: accedi in modo sicuro con login/logout.
+- 🧭 **Navigazione semplice**: interfaccia utente intuitiva e responsive.
 
-```bash
-ng serve
-```
+- ## 🛠️ Requisiti
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- [Node.js](https://nodejs.org/) (consigliata versione LTS)
+- [Ionic CLI](https://ionicframework.com/docs/cli) (es. `npm install -g @ionic/cli`)
+- [Angular CLI](https://angular.io/cli)
+- [Capacitor](https://capacitorjs.com/) per deploy mobile (opzionale)
 
-## Code scaffolding
+## ▶️ Come eseguire l'app
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+1. **Clona il repository**
 
 ```bash
-ng build
+git clone https://github.com/tuo-username/plantcare-ai.git
+cd plantcare-ai
+touch /src/assets/enviroment.ts
+// crea la tua API_KEY e inseriscila dentro enviroment.ts:
+export class Enviroment {
+	readonly API_KEY="tua API_KEY";
+
+	getApiKey() {
+		return this.API_KEY;	
+	}
+}
+npm install
+ionic serve --project nome-tuo-progetto
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+🤖 Integrazione con l'AI
+L'app usa un servizio ai.service.ts per comunicare con un backend AI (potresti usare OpenAI, HuggingFace, ecc.) per generare consigli intelligenti su:
 
-## Running unit tests
+Quando annaffiare
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Come curare piante in base alla temperatura del tua posizione geografica
 
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+L’AI non è inclusa in questo repository. Assicurati di creare la tua API_KEY nel file enviroment/enviroment.ts.
