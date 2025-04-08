@@ -37,3 +37,45 @@
 .hero-text {
 	color: var(--ion-color-tertiary)
 }
+
+.login-form-item {
+	padding: 2px;
+	// border: solid 2px;
+}
+
+.login-form {
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	gap: 16px; // Aggiunge spazio tra i figli
+  }
+  
+  .compact-form {
+	ion-item {
+	  --padding-start: 0;
+	  --inner-padding-end: 0;
+	  --min-height: 48px; // Altezza ridotta
+	}
+  
+	ion-input {
+	  font-size: 0.9rem;
+	}
+  
+	ion-button {
+	  height: 40px;
+	  font-size: 0.9rem;
+	}
+  }
+
+  .content-container {
+	height: 90%;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+  }

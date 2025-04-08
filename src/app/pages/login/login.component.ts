@@ -42,6 +42,11 @@ export class LoginComponent {
 		return this.loginForm.get('password');
 	}
 
+	ngOnInit(): void {
+		this.resetForm();
+	}
+
+
 	navigateTo(event: Event) {
 		blurActiveElement();
 		this.router.navigateTo('');
@@ -75,6 +80,13 @@ export class LoginComponent {
 		}
 	}
 
+	private resetForm(): void {
+		this.loginForm.reset({
+		  nickname: '',
+		  password: '',
+		});
+	}
+
 	private async handleAuth(): Promise<void> {
 		const userExists = await this.authService.userExists(this.credentials.nickname)
 		if (!userExists) {
@@ -94,7 +106,7 @@ export class LoginComponent {
 		}
 		else
 		{
-			console.log("credenziali errate");
+			console.log("Credenziali errate.");
 			this.errorMessage = 'Credenziali errate.'
 		}
 	}

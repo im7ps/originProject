@@ -7,55 +7,61 @@
 		  </ion-button>
 	  </div>
   </ion-toolbar>
-  </ion-header>
+</ion-header>
   
   <ion-content class="ion-padding">
-	  <section class="hero">
-		  <div class="hero-text">
-		  <ion-title class="hero-title">Prenditi cura delle tue piante</ion-title>
-		  <ion-text class="hero-text">Monitora, annaffia e ama il tuo giardino digitale.</ion-text>
-		  </div>
-	  </section>
-  
-	<form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-	  <ion-item>
-		<ion-label position="floating">Nickname</ion-label>
-		<ion-input 
-			formControlName="nickname"
-			autocomplete="username"
-			type="text"
-		  required
-		></ion-input>
-	  </ion-item>
-  
-	  <ion-note *ngIf="!credentials.nickname && isLoading === false" color="danger">
-		Il nickname è obbligatorio
-	  </ion-note>
-  
-	  <ion-item>
-		<ion-label position="floating">Password</ion-label>
-		<ion-input 
-			formControlName="password"
-			autocomplete="current-password"
-			required
-			type="password"
-		></ion-input>
-	  </ion-item>
-  
-	  <ion-note *ngIf="credentials.password.length < 6 && isLoading === false" color="danger">
-		La password deve avere almeno 6 caratteri
-	  </ion-note>
-  
-	  <ion-button type="submit" expand="block">
-		<ion-spinner *ngIf="isLoading"></ion-spinner>
-		<span *ngIf="!isLoading">Login</span>
-	  </ion-button>
-  
-	  <div *ngIf="errorMessage" class="error-message">
-		{{ errorMessage }}
-	  </div>
-  
-	</form>
+	<div class="content-container">
+
+		<div class="login-container">
+	
+			<section class="hero">
+				<div class="hero-text">
+				<ion-title class="hero-title">Prenditi cura delle tue piante</ion-title>
+				<ion-text class="hero-text">Monitora, annaffia e ama il tuo giardino digitale.</ion-text>
+				</div>
+			</section>
+		
+		  <form class="login-form compact-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+			<ion-item class="login-form-item">
+			  <ion-label position="floating">Nickname</ion-label>
+			  <ion-input 
+				  formControlName="nickname"
+				  autocomplete="username"
+				  type="text"
+				required
+			  ></ion-input>
+			</ion-item>
+		
+			<ion-note *ngIf="nickname?.invalid && (nickname?.touched || nickname?.dirty)" color="danger">
+			  Il nickname è obbligatorio
+			</ion-note>
+		
+			<ion-item class="login-form-item">
+			  <ion-label position="floating">Password</ion-label>
+			  <ion-input 
+				  formControlName="password"
+				  autocomplete="current-password"
+				  required
+				  type="password"
+			  ></ion-input>
+			</ion-item>
+		
+			<ion-note *ngIf="password?.invalid && (password?.dirty || password?.touched)" color="danger">
+			  La password deve avere almeno 6 caratteri
+			</ion-note>
+		
+			<ion-button type="submit" expand="block">
+			  <ion-spinner *ngIf="isLoading"></ion-spinner>
+			  <span *ngIf="!isLoading">Login</span>
+			</ion-button>
+		
+			<div *ngIf="errorMessage" class="error-message">
+			  {{ errorMessage }}
+			</div>
+		
+		  </form>
+		</div>
+	</div>
   </ion-content>
   
   <ion-footer class="home-footer">
