@@ -1,16 +1,15 @@
 import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IonToggle, IonSelect, IonSelectOption, IonContent, IonLabel, IonCard, IonCardHeader, IonButtons, IonInput, IonItem, IonCardTitle, IonCardContent, IonButton, IonIcon, IonText, IonFooter, IonHeader, IonTitle, IonToolbar, IonModal, } from '@ionic/angular/standalone';
+import { ModalController, IonToggle, IonSelect, IonSelectOption, IonContent, IonLabel, IonCard, IonCardHeader, IonButtons, IonInput, IonItem, IonCardTitle, IonCardContent, IonButton, IonIcon, IonText, IonFooter, IonHeader, IonTitle, IonToolbar, IonModal, } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { construct, leaf, water, thermometer, statsChart, add } from 'ionicons/icons';
 import { StatePersistantService } from '../../services/state-persistant.service';
 
-import { ModalController } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 
 import { User } from '../../models/user.model';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { WeatherService } from '../../services/weather.service';
 
@@ -20,7 +19,6 @@ import { WeatherService } from '../../services/weather.service';
   styleUrls: ['./userpage.component.scss'],
   standalone: true,
   imports: [
-	RouterLink,
     CommonModule,
     FormsModule,
     IonContent,
@@ -77,6 +75,20 @@ export class UserPageComponent {
 		this.router.navigateByUrl('/plants');
 	}
 
+	changeRoute(event: Event) {
+		const buttonName = (event.target as HTMLElement).getAttribute('name');
+		console.log('Nome del bottone cliccato:', buttonName);
+		
+
+		if (buttonName === 'home') {
+			(document.activeElement as HTMLElement)?.blur();
+		  	this.router.navigateByUrl('/home');
+		} else if (buttonName === 'logout') {
+			(document.activeElement as HTMLElement)?.blur();
+			this.pstate.logout();
+			this.router.navigateByUrl('/login');
+		}
+	  }
 
 	cancel() {
 		if (this.modal) {
@@ -98,8 +110,7 @@ export class UserPageComponent {
 	if (event.detail.role === 'confirm') {
 		const plantData = event.detail.data;
 		console.log('Dati ricevuti da dismiss:', plantData);
-	
-		// Puoi gestire i dati qui
+
 
 		this.pstate.addPlant(plantData);
 		this.user = this.pstate.getUserInstance();

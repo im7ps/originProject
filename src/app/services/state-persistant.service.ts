@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
 
 interface UserCredentials {
-  [nickname: string]: string; // Nickname -> Password
+  [nickname: string]: string;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -26,8 +26,8 @@ export class StatePersistantService {
   }
 
   getUserPlants(nickname: string): Array<{ name: string; position: string; grouped: boolean }> {
-	const userPlants = localStorage.getItem(nickname + '_plants'); // Recupera i dati delle piante dall'utente
-	return userPlants ? JSON.parse(userPlants) : []; // Restituisci l'array di piante o un array vuoto se non ci sono dati
+	const userPlants = localStorage.getItem(nickname + '_plants');
+	return userPlants ? JSON.parse(userPlants) : []; 
   }
 
   getUserInstance(): User {
@@ -45,16 +45,13 @@ export class StatePersistantService {
 	  throw new Error('Nessun utente loggato');
 	}
   
-	// Aggiungi la pianta alla lista corrente
 	this.currentUser.plants.push(plant);
   
-	// Salva i dati aggiornati in localStorage
 	localStorage.setItem(this.currentUser.username + '_plants', JSON.stringify(this.currentUser.plants));
   
 	console.log(`Pianta aggiunta per l'utente ${this.currentUser.username}:`, plant);
   }
 
-  // Nuove funzioni per il login avanzato
   private getUsers(): UserCredentials {
     const users = localStorage.getItem(this.USERS_KEY);
     return users ? JSON.parse(users) : {};
@@ -81,16 +78,16 @@ export class StatePersistantService {
   }
 
   login(nickname: string): void {
-	// Salva il nickname come chiave per la sessione corrente
+
 	localStorage.setItem('current_user', nickname);
   
-	// Inizializza i dati dell'utente corrente
+
 	const users = this.getUsers();
 	if (!users[nickname]) {
 	  throw new Error('Utente non registrato');
 	}
   
-	// Recupera o inizializza i dati delle piante per l'utente
+
 	const userPlants = localStorage.getItem(nickname + '_plants');
 	this.currentUser = {
 	  username: nickname,
@@ -103,7 +100,7 @@ export class StatePersistantService {
   logout(): void {
 	const nickname = localStorage.getItem('current_user');
 	if (nickname) {
-	  localStorage.removeItem('current_user'); // Rimuovi la sessione corrente
+	  localStorage.removeItem('current_user');
 	}
 	console.log('Utente disconnesso');
   }

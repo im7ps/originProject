@@ -1,17 +1,15 @@
 <ion-header class="homeHeader">
     <ion-toolbar class="homeToolbar">
-        <!-- Posiziona il titolo all'inizio -->
         <ion-title slot="start" class="home-title">
             <ion-icon class="home-icon" name="leaf" color="primary"></ion-icon>
             PlantCare
         </ion-title>
 
-        <!-- Posiziona i bottoni alla fine -->
         <div slot="end" class="cta">
-            <ion-button class="header-button" routerLink="/login" color="secondary">
+			<ion-button class="header-button" (click)="onLoginClick()" color="secondary">
 				<ion-text>Accedi</ion-text> 
 			</ion-button>
-        </div>
+		</div>
     </ion-toolbar>
 </ion-header>
 
@@ -23,7 +21,6 @@
 		</div>
 	</section>
 
-	<!-- Punti chiave -->
 	<ion-grid class="features">
 		<ion-row>
 		<ion-card>

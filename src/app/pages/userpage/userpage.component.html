@@ -7,11 +7,11 @@
         </ion-title>
 
         <div slot="end" class="cta">
-            <ion-button class="header-button" routerLink="/home" color="secondary">
+            <ion-button name="home" class="header-button" (click)="changeRoute($event)" color="secondary">
 				<ion-text>Home</ion-text> 
 			</ion-button>
 			
-            <ion-button class="header-button" routerLink="/logout" color="secondary">
+            <ion-button name="logout" class="header-button" (click)="changeRoute($event)" color="secondary">
 				<ion-text>Logout</ion-text> 
 			</ion-button>
         </div>

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { StatePersistantService } from '../services/state-persistant.service';
 
 @Injectable({
@@ -19,8 +18,7 @@ export class AuthGuard implements CanActivate {
     if (this.stateService.isLoggedIn()) {
       return true;
     }
-    
-    // Reindirizza al login mantenendo l'URL richiesto come parametro
+
     return this.router.createUrlTree(['/login'], {
       queryParams: { returnUrl: state.url }
     });

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { StatePersistantService } from '../../services/state-persistant.service';
 import { IonButton, IonContent, IonHeader, IonFooter, IonText, IonInput, IonItem, IonLabel, IonNote, IonSpinner, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { CommonModule, NgIf } from '@angular/common';
@@ -8,7 +8,7 @@ import { CommonModule, NgIf } from '@angular/common';
   selector: 'app-login',
   templateUrl: './login.component.html',
   standalone: true,
-  imports: [IonFooter, IonHeader, IonText, IonToolbar, IonLabel, IonInput, IonSpinner, IonButton, IonItem, IonNote, IonContent, IonTitle, RouterLink, NgIf, CommonModule],
+  imports: [IonFooter, IonHeader, IonText, IonToolbar, IonLabel, IonInput, IonSpinner, IonButton, IonItem, IonNote, IonContent, IonTitle, NgIf, CommonModule],
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
@@ -22,34 +22,43 @@ export class LoginComponent {
     private router: Router,
   ) {}
 
-  onPasswordInput(event: Event): void {
-	const input = event.target as HTMLInputElement;
-	this.password = input.value || '';
-	console.log(`password: ${this.password}`);
-}
+	onPasswordInput(event: Event): void {
+		const input = event.target as HTMLInputElement;
+		this.password = input.value || '';
+		console.log(`password: ${this.password}`);
+  	}
 
-onNicknameInput(event: Event): void {
-	const input = event.target as HTMLInputElement;
-	this.nickname = input.value || '';
-	console.log(`password: ${this.nickname}`);
-  }
+	onNicknameInput(event: Event): void {
+		const input = event.target as HTMLInputElement;
+		this.nickname = input.value || '';
+		console.log(`nickname: ${this.nickname}`);
+  	}
+
+	  changeRoute(event: Event) {
+		const buttonName = (event.target as HTMLElement).getAttribute('name');
+		console.log('Nome del bottone cliccato:', buttonName);
+		
+
+		if (buttonName === 'userpage') {
+			(document.activeElement as HTMLElement)?.blur();
+		  	this.router.navigateByUrl('/userpage');
+		}
+	  }
 
   onSubmit() {
+	(document.activeElement as HTMLElement)?.blur();
 	console.log('Form submitted');
 	console.log(`Nickname: ${this.nickname}, Password: ${this.password}`);
 
     this.isLoading = true;
     this.errorMessage = '';
 
-    // Simuliamo un piccolo ritardo per il caricamento
       try {
-        // Se l'utente non esiste, lo registriamo
         if (!this.stateService.userExists(this.nickname)) {
 			console.log("registrazione utente")
 			this.stateService.registerUser(this.nickname, this.password);
         }
-        
-        // Verifichiamo le credenziali
+
         if (this.stateService.validateCredentials(this.nickname, this.password)) {
 			console.log("verifica credenziali utente")
           this.stateService.login(this.nickname);

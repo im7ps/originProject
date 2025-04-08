@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ModalController, IonButton, IonContent, IonHeader, IonToolbar, IonTitle, IonButtons, IonItem, IonLabel, IonInput, IonSelect, IonSelectOption, IonToggle } from '@ionic/angular/standalone';
-import { IonModal } from '@ionic/angular';
+import { ModalController, IonButton, IonContent, IonHeader, IonModal, IonToolbar, IonTitle, IonButtons, IonItem, IonLabel, IonInput, IonSelect, IonSelectOption, IonToggle } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-plant-form',
@@ -13,6 +12,7 @@ import { IonModal } from '@ionic/angular';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+	IonModal,
     // IonButton,
     // IonContent,
     // IonHeader,
