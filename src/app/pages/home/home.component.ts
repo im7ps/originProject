@@ -6,9 +6,10 @@ import {
   IonText,
   IonFooter,
 } from '@ionic/angular/standalone';
-import { Router } from '@angular/router';
 import { addIcons } from 'ionicons';
 import { construct, leaf, water, thermometer, statsChart } from 'ionicons/icons';
+
+import { RouterService } from '../../services/router-service';
 
 @Component({
 	selector: 'app-home',
@@ -22,13 +23,13 @@ import { construct, leaf, water, thermometer, statsChart } from 'ionicons/icons'
 	styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-	constructor(private router: Router) {
+	constructor(private router: RouterService) {
 		addIcons({ construct, leaf, water, thermometer, statsChart });
 	}
 
 	onLoginClick() {
-		(document.activeElement as HTMLElement)?.blur();
-		this.router.navigateByUrl('/login');
-		console.log('Bottone Accedi cliccato!');
+		const elem = document.activeElement as HTMLElement | undefined;
+		elem?.blur();
+		this.router.navigateTo('/login');
 	  }
 }

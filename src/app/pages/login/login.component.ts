@@ -1,82 +1,112 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { StatePersistantService } from '../../services/state-persistant.service';
 import { IonButton, IonContent, IonHeader, IonFooter, IonText, IonInput, IonItem, IonLabel, IonNote, IonSpinner, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { CommonModule, NgIf } from '@angular/common';
+import { UserCredentials } from "../../models/auth.interface";
+import { AuthService } from '../../services/auth.service';
+import { RouterService } from '../../services/router-service';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { blurActiveElement } from '../../utils/router_utils/router_utils';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   standalone: true,
-  imports: [IonFooter, IonHeader, IonText, IonToolbar, IonLabel, IonInput, IonSpinner, IonButton, IonItem, IonNote, IonContent, IonTitle, NgIf, CommonModule],
+  imports: [ReactiveFormsModule,
+	IonFooter, IonHeader, IonText, IonToolbar, IonLabel, IonInput, IonSpinner, IonButton, IonItem, IonNote, IonContent, IonTitle, NgIf, CommonModule],
   styleUrls: ['./login.component.scss'],
 })
+
 export class LoginComponent {
-  nickname: string = '';
-  password: string = '';
-  isLoading: boolean = false;
-  errorMessage: string = '';
+	loginForm: FormGroup;
+	isLoading: boolean = false;
+	errorMessage: string = '';
 
-  constructor(
-    private stateService: StatePersistantService,
-    private router: Router,
-  ) {}
-
-	onPasswordInput(event: Event): void {
-		const input = event.target as HTMLInputElement;
-		this.password = input.value || '';
-		console.log(`password: ${this.password}`);
-  	}
-
-	onNicknameInput(event: Event): void {
-		const input = event.target as HTMLInputElement;
-		this.nickname = input.value || '';
-		console.log(`nickname: ${this.nickname}`);
-  	}
-
-	  changeRoute(event: Event) {
-		const buttonName = (event.target as HTMLElement).getAttribute('name');
-		console.log('Nome del bottone cliccato:', buttonName);
-		
-
-		if (buttonName === 'userpage') {
-			(document.activeElement as HTMLElement)?.blur();
-		  	this.router.navigateByUrl('/userpage');
-		}
-	  }
-
-  onSubmit() {
-	(document.activeElement as HTMLElement)?.blur();
-	console.log('Form submitted');
-	console.log(`Nickname: ${this.nickname}, Password: ${this.password}`);
-
-    this.isLoading = true;
-    this.errorMessage = '';
-
-      try {
-        if (!this.stateService.userExists(this.nickname)) {
-			console.log("registrazione utente")
-			this.stateService.registerUser(this.nickname, this.password);
-        }
-
-        if (this.stateService.validateCredentials(this.nickname, this.password)) {
-			console.log("verifica credenziali utente")
-          this.stateService.login(this.nickname);
-          
-		  this.router.navigateByUrl('/userpage');
-        } 
-		else 
-		{
-			console.log("password non corretta")
-			this.errorMessage = 'Password non corretta';
-        }
-	} 
-	catch (error) {
-		  console.log("errore nel login")
-        this.errorMessage = 'Si è verificato un errore durante il login';
-    }
-	finally {
-        this.isLoading = false;
+	constructor(private authService: AuthService, private router: RouterService, private fb: FormBuilder) {
+		this.loginForm = this.fb.group({
+			nickname: ['', [Validators.required, Validators.minLength(3)]],
+			password: ['', [Validators.required, Validators.minLength(6)]],
+		})
 	}
-  }
+	
+	get credentials(): UserCredentials {
+		return this.loginForm.value as UserCredentials;
+	}
+
+	get nickname() {
+		return this.loginForm.get('nickname');
+	  }
+	
+	get password() {
+		return this.loginForm.get('password');
+	}
+
+	navigateTo(event: Event) {
+		blurActiveElement();
+		this.router.navigateTo('');
+	}
+
+
+	async onSubmit(): Promise<void> {
+		if (this.loginForm.invalid) {
+			this.markAllAsTouched();
+			return;
+		}
+
+		console.log('Form submitted', this.credentials);
+		this.isLoading = true;
+		this.errorMessage = '';
+
+		this.credentials.nickname = this.loginForm.value.nickname
+		this.credentials.password = this.loginForm.value.password
+
+		console.log("Nickname: ", this.credentials.nickname);
+		console.log("Password: ", this.credentials.password);
+
+		try {
+			await this.handleAuth();
+		}
+		catch (error) {
+			this.handleError(error);
+		}
+		finally {
+			this.isLoading = false;
+		}
+	}
+
+	private async handleAuth(): Promise<void> {
+		const userExists = await this.authService.userExists(this.credentials.nickname)
+		if (!userExists) {
+			await this.authService.registerUser(this.credentials.nickname, this.credentials.password);
+		} 
+
+		const isValid = await this.authService.validateCredentials(
+			this.credentials.nickname, 
+			this.credentials.password
+		);
+
+		if (isValid)
+		{
+			this.authService.login(this.credentials.nickname);
+			blurActiveElement();
+			await this.router.navigateTo('/userpage');
+		}
+		else
+		{
+			console.log("credenziali errate");
+			this.errorMessage = 'Credenziali errate.'
+		}
+	}
+
+	private handleError(error: unknown): void {
+		console.error("Errore nel login", error);
+		this.errorMessage = 'Si è verificato un errore durante il login';
+	}
+
+	private markAllAsTouched(): void {
+		Object.values(this.loginForm.controls).forEach(control => {
+		  control.markAsTouched();
+		});
+	}
 }
